@@ -1,0 +1,5 @@
+<div class="haDeviceHistory" data-key="{{deviceKey}}">
+	<ol>
+		<li ng-repeat="(time, value) in history | orderBy: time">{{time | amDateFormat: 'MM/DD HH:mm'}}: {{value}}</li>
+	</ol>	
+</div>

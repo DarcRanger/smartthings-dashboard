@@ -1,0 +1,24 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "locations": {
+      ".read": "root.child('users').child(auth.uid).child('isEnabled').val() === true",
+      ".write": "root.child('users').child(auth.uid).child('isLocationWriter').val() === true"
+    },
+    "loc": {
+      ".read": "root.child('users').child(auth.uid).child('isEnabled').val() === true",
+      ".write": "root.child('users').child(auth.uid).child('isLocationWriter').val() === true"
+    },
+    "users": {
+      "$userId": {
+        ".read": "(auth != null) && ($userId === auth.uid)",
+        ".write": false,
+        "profile": {
+          ".read": "(auth != null) && ($userId === auth.uid)",
+          ".write": "(auth != null) && ($userId === auth.uid)"
+        }
+      }
+    }
+  }
+}
