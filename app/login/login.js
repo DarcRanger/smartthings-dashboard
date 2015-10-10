@@ -14,53 +14,58 @@ angular.module('myApp.login', ['firebase.utils', 'firebase.auth', 'ngRoute'])
     $scope.confirm = null;
     $scope.createMode = false;
 
-    $scope.login = function(email, pass) {
-      $scope.err = null;
-      Auth.$authWithPassword({ email: email, password: pass }, {rememberMe: true})
-        .then(function(/* user */) {
-          $location.path('/account');
-        }, function(err) {
-          $scope.err = errMessage(err);
-        });
-    };
+    // $scope.login = function(email, pass) {
+    //   $scope.err = null;
+    //   Auth.$authWithPassword({ email: email, password: pass }, {rememberMe: true})
+    //     .then(function(/* user */) {
+    //       $location.path('/account');
+    //     }, function(err) {
+    //       $scope.err = errMessage(err);
+    //     });
+    // };
     
     $scope.googleLogin = function() {
-      //var ref = new Firebase("https://vivid-heat-1374.firebaseio.com");
-      Auth.$authWithOAuthRedirect("google", function(error) {
-        if (error) {
-          console.log("Login Failed!", error);
-        } else {
-          // We'll never get here, as the page will redirect on success.
-        }
-      });      
+      /*console.log('s', $scope); 
+      console.log('a', Auth); 
+      console.log('l', $location); 
+      console.log('f', fbutil);*/
+      
+      
+      Auth.$authWithOAuthPopup("google")
+      .then(function(authData) {
+        console.log("Logged in as:", authData.uid);
+      })
+      .catch(function(error) {
+        console.error("Authentication failed:", error);
+      });
     };
 
-    $scope.createAccount = function() {
-      $scope.err = null;
-      if( assertValidAccountProps() ) {
-        var email = $scope.email;
-        var pass = $scope.pass;
-        // create user credentials in Firebase auth system
-        Auth.$createUser({email: email, password: pass})
-          .then(function() {
-            // authenticate so we have permission to write to Firebase
-            return Auth.$authWithPassword({ email: email, password: pass });
-          })
-          .then(function(user) {
-            // create a user profile in our data store
-            var ref = fbutil.ref('users', user.uid);
-            return fbutil.handler(function(cb) {
-              ref.set({email: email, name: name||firstPartOfEmail(email)}, cb);
-            });
-          })
-          .then(function(/* user */) {
-            // redirect to the account page
-            $location.path('/account');
-          }, function(err) {
-            $scope.err = errMessage(err);
-          });
-      }
-    };
+    // $scope.createAccount = function() {
+    //   $scope.err = null;
+    //   if( assertValidAccountProps() ) {
+    //     var email = $scope.email;
+    //     var pass = $scope.pass;
+    //     // create user credentials in Firebase auth system
+    //     Auth.$createUser({email: email, password: pass})
+    //       .then(function() {
+    //         // authenticate so we have permission to write to Firebase
+    //         return Auth.$authWithPassword({ email: email, password: pass });
+    //       })
+    //       .then(function(user) {
+    //         // create a user profile in our data store
+    //         var ref = fbutil.ref('users', user.uid);
+    //         return fbutil.handler(function(cb) {
+    //           ref.set({email: email, name: name||firstPartOfEmail(email)}, cb);
+    //         });
+    //       })
+    //       .then(function(/* user */) {
+    //         // redirect to the account page
+    //         $location.path('/account');
+    //       }, function(err) {
+    //         $scope.err = errMessage(err);
+    //       });
+    //   }
+    // };
 
     function assertValidAccountProps() {
       if( !$scope.email ) {

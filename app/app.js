@@ -16,6 +16,12 @@ angular.module('myApp', [
     });
   }])
 
+  // .config(['$locationProvider', function ($locationProvider) {
+  //   $locationProvider
+  //     .html5Mode(true)
+  //     .hashPrefix('!');
+  // }])
+
 	.controller('MenuCtrl', function($scope, $rootScope, $location) {
 	  
 	  $scope.menu = [
@@ -26,7 +32,7 @@ angular.module('myApp', [
 	  
 	  $scope.menuActive = '/';
 	  
-    $scope.loginWithGoogle = function() {
+    /*$scope.loginWithGoogle = function() {
       var ref = new Firebase("https://vivid-heat-1374.firebaseio.com");
       ref.authWithOAuthRedirect("google", function(error) {
         if (error) {
@@ -37,13 +43,17 @@ angular.module('myApp', [
       });  
       
       return false;    
-    };
+    };*/
     
 	  $rootScope.$on('$routeChangeSuccess', function(e, curr, prev) {
        $scope.menuActive = $location.path();
     });
 		
 	})
+	
+	.filter('encodeURIComponent', function() {
+    return window.encodeURIComponent;
+  })
   
   .run(['$rootScope', 'Auth', function($rootScope, Auth) {
     // track status of authentication
