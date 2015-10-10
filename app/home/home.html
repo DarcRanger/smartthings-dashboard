@@ -3,7 +3,7 @@
 
 <h1>Samples</h1>
 <h2>Parameters</h2>
-<p>{{debugInfo | stringify}}</p>
+<p>{{debugInfo | json}}</p>
 
 <h1>Locations</h1>
 <ul>
@@ -25,7 +25,7 @@
 <div ng-show="deviceHistory">
 	<h2>History</h2>
 	<ol>
-		<li ng-repeat="(time, value) in deviceHistory | orderBy: time">{{time | amDateFormat: 'MM/DD HH:mm'}}: {{value}}</li>
+		<li ng-repeat="(time, value) in deviceHistory | orderBy: time">{{time | date: 'MM/dd HH:mm'}}: {{value}}</li>
 	</ol>
 </div>
 

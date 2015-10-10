@@ -1,8 +1,8 @@
 (function(angular) {
   "use strict";
 
-  angular.module('myApp.device', ['angularMoment'])
-  
+  angular.module('myApp.device', [])
+
   .directive('device', function() {
     return {
       restrict: 'E',

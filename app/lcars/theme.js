@@ -3,23 +3,30 @@
 
   var app = angular.module('myApp.themes.lcars', ['firebase', 'firebase.utils', 'ngRoute', 'door3.css', 'myApp.device', 'myApp.deviceHistory']);
 
-  app.controller('LcarsThemeCtrl', ['$scope', 'fbutil', 'user', '$firebaseObject', 'FBURL', '$location', 
-    function ($scope, fbutil, user, $firebaseObject, FBURL, $location) {
-      
+  app.controller('LcarsThemeCtrl', ['$scope', 'fbutil', 'user', '$firebaseObject', 'FBURL', '$routeParams',
+    function ($scope, fbutil, user, $firebaseObject, FBURL, $routeParams) {
+
+    $scope.debugInfo = $routeParams;
+
     $scope.locations = $firebaseObject(fbutil.ref('locations'));
     $scope.user = user;
     $scope.FBURL = FBURL;
-        
-    $scope.locationId = $location.search().loc;
-    
+
+    $scope.locationId = $routeParams.location;
+    $scope.deviceKey = $routeParams.deviceKey;
+
     if($scope.locationId) {
       $scope.location = $firebaseObject(fbutil.ref('loc/'+$scope.locationId));
     }
-    
+
+    if($scope.deviceKey) {
+      $scope.deviceHistory = $firebaseObject(fbutil.ref('loc/' + $scope.locationId + '/history/' + $scope.deviceKey));
+    }
+
   }]);
 
   app.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.when('/lcars', {
+    $routeProvider.when('/lcars/:location?/:deviceKey?', {
       templateUrl: 'lcars/theme.html',
       css: 'lcars/theme.css',
       controller: 'LcarsThemeCtrl',
@@ -33,7 +40,7 @@
         }]
       }
     });
-      
+
   }]);
 
 })(angular);

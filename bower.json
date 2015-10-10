@@ -14,7 +14,6 @@
     "firebase": "2.2.2",
     "angularfire": "~1.0.0",
     "mockfirebase": "~0.10.3",
-    "angular-moment": "~0.10.3",
     "angular-css": "~1.0.7"
   }
 }

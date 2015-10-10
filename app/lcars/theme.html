@@ -1,24 +1,28 @@
-<p class="status good" ng-show="loggedIn">Hello! You are logged in with id {{user.uid}}.</p>
-<p class="status" ng-hide="loggedIn">Welcome. You are not <a href="#/login">logged in</a></p>
-
-<!--input ng-model="syncedValue.$value" type="text" ng-change="syncedValue.$save()" /> <b>{{syncedValue.$value}}</b-->
 <h1>LCARS</h1>
-<h2>Locations</h2>
+<h2>Parameters</h2>
+<p>{{debugInfo | json}}</p>
+<p>{{user | json}}</p>
+
+<h1>Locations</h1>
 <ul>
-	<li ng-repeat="(id, name) in locations"><a href="#/home?loc={{id}}">{{name}}</a></li>
+	<li ng-repeat="(id, name) in locations"><a ng-href="#/home/{{id | encodeURIComponent}}">{{name}}</a></li>
 </ul>
 
 <div ng-show="location">
 	<h1>{{location.name}}</h1>
+	<h2>Devices</h2>
 	<ul>
 		<li ng-repeat="(key, device) in location.current">
-			<!--a href="#/home/{{key}}">{{device.displayName}} ~ {{device.name}}</a>
-			 = {{device.value}}{{device.unit}}-->
-			 <device key="key" device="device">
-			 	<button ng-click="$parent.$parent.$parent.selectedDeviceKey = key">History</button>
+			<device key="key" device="device">
+			 	<a ng-href="#/home/{{locationId | encodeURIComponent}}/{{key | encodeURIComponent}}">Select</a> &rarr;
 			 </device>
 		</li>
 	</ul>
-	
-	<device-history location-key="locationId" device-key="selectedDeviceKey"></device-history>
+</div>
+
+<div ng-show="deviceHistory">
+	<h2>History</h2>
+	<ol>
+		<li ng-repeat="(time, value) in deviceHistory | orderBy: time">{{time | date: 'MM/dd HH:mm'}}: {{value}}</li>
+	</ol>
 </div>

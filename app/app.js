@@ -55,10 +55,6 @@ angular.module('myApp', [
     return window.encodeURIComponent;
   })
 
-	.filter('stringify', function() {
-    return JSON.stringify;
-  })
-
   .run(['$rootScope', 'Auth', function($rootScope, Auth) {
     // track status of authentication
     Auth.$onAuth(function(user) {
