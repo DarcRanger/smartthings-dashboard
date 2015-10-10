@@ -9,7 +9,7 @@ angular.module('myApp', [
     'myApp.login',
     'myApp.themes.lcars'
   ])
-  
+
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider.otherwise({
       redirectTo: '/home'
@@ -23,15 +23,15 @@ angular.module('myApp', [
   // }])
 
 	.controller('MenuCtrl', function($scope, $rootScope, $location) {
-	  
+
 	  $scope.menu = [
 	    {label:'Home', route:'#/home'},
 	    {label:'LCARS', route:'#/lcars'},
       {label:'Account', route:'#/account'}
 	   ]
-	  
+
 	  $scope.menuActive = '/';
-	  
+
     /*$scope.loginWithGoogle = function() {
       var ref = new Firebase("https://vivid-heat-1374.firebaseio.com");
       ref.authWithOAuthRedirect("google", function(error) {
@@ -40,21 +40,25 @@ angular.module('myApp', [
         } else {
           // We'll never get here, as the page will redirect on success.
         }
-      });  
-      
-      return false;    
+      });
+
+      return false;
     };*/
-    
+
 	  $rootScope.$on('$routeChangeSuccess', function(e, curr, prev) {
        $scope.menuActive = $location.path();
     });
-		
+
 	})
-	
+
 	.filter('encodeURIComponent', function() {
     return window.encodeURIComponent;
   })
-  
+
+	.filter('stringify', function() {
+    return JSON.stringify;
+  })
+
   .run(['$rootScope', 'Auth', function($rootScope, Auth) {
     // track status of authentication
     Auth.$onAuth(function(user) {
