@@ -69,6 +69,11 @@ fieldset {
     display: none !important;
 }
 
+/* floats */
+h1, h2, h3, h4 {
+  clear: both;
+}
+
 /* device symbols*/
 .haDevice[data-deviceType=temperature] .haDeviceValue::after  {
   content: '\00b0';
@@ -91,7 +96,7 @@ fieldset {
   width: 8em;
   height: 8em;
   margin: .25em;
-  padding:.25em;
+  padding: .25em;
 }
 
 .haDeviceTiles device .haDevice {

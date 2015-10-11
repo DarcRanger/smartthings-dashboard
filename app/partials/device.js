@@ -15,10 +15,10 @@
       controller: function($scope) {
         $scope.deviceId = $scope.device.deviceId;
         $scope.displayName = $scope.device.displayName;
-        $scope.deviceType = $scope.device.name;
+        $scope.deviceType = $scope.device.deviceType;
         $scope.value = $scope.device.value;
         $scope.unit = $scope.device.unit;
-        $scope.time = $scope.device.time;
+        $scope.updated = $scope.device.updated;
       }
     };
   });
