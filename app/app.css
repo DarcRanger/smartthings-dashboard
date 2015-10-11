@@ -68,3 +68,58 @@ fieldset {
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
+
+/* device symbols*/
+.haDevice[data-deviceType=temperature] .haDeviceValue::after  {
+  content: '\00b0';
+}
+
+.haDevice[data-deviceType=humidity] .haDeviceValue::after  {
+  content: '%';
+}
+
+.haDevice[data-deviceType=battery] .haDeviceValue::after  {
+  content: '%';
+}
+
+
+/* Device Tiles */
+.haDeviceTiles device  {
+  border: 1px solid black;
+  display: block;
+  float: left;
+  width: 8em;
+  height: 8em;
+  margin: .25em;
+  padding:.25em;
+}
+
+.haDeviceTiles device .haDevice {
+  position: relative;
+  height: 100%;
+}
+.haDeviceTiles device .haDevice .haDeviceUpdated  {
+  font-size: .7em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.haDeviceTiles device .haDevice .haDeviceName  {
+  font-size: 1em;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.haDeviceTiles device .haDevice .haDeviceType  {
+  font-size: .7em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.haDeviceTiles device .haDevice .haDeviceValue  {
+  font-size: 2em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

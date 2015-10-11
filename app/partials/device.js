@@ -14,11 +14,11 @@
       templateUrl: 'partials/device.html',
       controller: function($scope) {
         $scope.deviceId = $scope.device.deviceId;
-        $scope.name = $scope.device.displayName;
+        $scope.displayName = $scope.device.displayName;
         $scope.deviceType = $scope.device.name;
         $scope.value = $scope.device.value;
         $scope.unit = $scope.device.unit;
-        $scope.updated = $scope.device.time;
+        $scope.time = $scope.device.time;
       }
     };
   });

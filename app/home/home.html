@@ -12,7 +12,8 @@
 
 <div ng-show="location">
 	<h1>{{location.name}}</h1>
-	<h2>Devices</h2>
+
+	<h2>Devices as a list</h2>
 	<ul>
 		<li ng-repeat="(key, device) in location.current">
 			<device key="key" device="device">
@@ -20,6 +21,11 @@
 			 </device>
 		</li>
 	</ul>
+
+	<h2>Devices tiles</h2>
+	<div class="haDeviceTiles">
+		<device ng-repeat="(key, device) in location.current" key="key" device="device"></device>
+	</div>
 </div>
 
 <div ng-show="deviceHistory">
