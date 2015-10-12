@@ -1,0 +1,36 @@
+.lcarsPanel {
+  display: table;
+  width: 100%;
+}
+.lcarsHeader, .lcarsBody, .lcarsFooter {
+  display: table-row;
+}
+.lcarsLeft, .lcarsCenter, .lcarsRight {
+  display: table-cell;
+}
+
+.lcarsLeft {
+  width: 10em;
+}
+
+.lcarsHeader {
+  height: 1.2em;
+}
+.lcarsHeader .lcarsCenter {
+  background-color: LightSalmon;
+}
+
+.lcarsBody .lcarsLeft {
+  background-color: LightSalmon;
+}
+
+
+
+
+
+.lcarsFloors .lcarsBody {
+  height: 400px;
+}
+.lcarsHistory .lcarsBody {
+  height: 200px;
+}

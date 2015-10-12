@@ -1,0 +1,7 @@
+
+<div class="haImageMap" style="background-image: url({{config.background}});">
+	<div class="label">{{im.name}}</div>
+	<div class="haImageMapTile" ng-repeat="tile in config.tiles" ng-style="getTilePosition(tile)">
+		<device ng-repeat="device in allDevices | filterByKeys:tile.devices" class="haMiniDeviceTile" key="device.deviceKey" device="device" ></device>
+	</div>
+</div>

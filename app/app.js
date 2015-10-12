@@ -55,6 +55,18 @@ angular.module('myApp', [
     return window.encodeURIComponent;
   })
 
+  .filter('filterByKeys', function() {
+    return function(input, keys) {
+      var out = [];
+      angular.forEach(input, function(value, key) {
+        if(keys.indexOf(key) !== -1)
+          out.push(value);
+      });
+
+      return out;
+    };
+  })
+
   .run(['$rootScope', 'Auth', function($rootScope, Auth) {
     // track status of authentication
     Auth.$onAuth(function(user) {

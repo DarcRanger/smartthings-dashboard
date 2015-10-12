@@ -1,28 +1,30 @@
 <h1>LCARS</h1>
-<h2>Parameters</h2>
-<p>{{debugInfo | json}}</p>
-<p>{{user | json}}</p>
-
-<h1>Locations</h1>
 <ul>
 	<li ng-repeat="(id, name) in locations"><a ng-href="#/home/{{id | encodeURIComponent}}">{{name}}</a></li>
 </ul>
 
-<div ng-show="location">
-	<h1>{{location.name}}</h1>
-	<h2>Devices</h2>
-	<ul>
-		<li ng-repeat="(key, device) in location.current">
-			<device key="key" device="device">
-			 	<a ng-href="#/home/{{locationId | encodeURIComponent}}/{{key | encodeURIComponent}}">Select</a> &rarr;
-			 </device>
-		</li>
-	</ul>
+<div class="lcarsPanel lcarsFloors">
+	<div class="lcarsHeader">
+		<div class="lcarsLeft">&nbsp;</div>
+		<div class="lcarsCenter">Header</div>
+	</div>
+	<div class="lcarsBody">
+		<div class="lcarsLeft">Left</div>
+		<div class="lcarsCenter"></div>
+	</div>
+	<div class="lcarsFooter">
+		<div class="lcarsLeft">&nbsp;</div>
+		<div class="lcarsCenter">&nbsp;</div>
+	</div>
 </div>
 
-<div ng-show="deviceHistory">
-	<h2>History</h2>
-	<ol>
-		<li ng-repeat="(time, value) in deviceHistory | orderBy: time">{{time | date: 'MM/dd HH:mm'}}: {{value}}</li>
-	</ol>
+<div class="lcarsPanel lcarsHistory">
+	<div class="lcarsHeader">
+		<div class="lcarsLeft">&nbsp;</div>
+		<div class="lcarsCenter">Header</div>
+	</div>
+	<div class="lcarsBody">
+		<div class="lcarsLeft">Left</div>
+		<div class="lcarsCenter">&nbsp;</div>
+	</div>
 </div>

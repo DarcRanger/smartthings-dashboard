@@ -15,12 +15,6 @@
 <body ng-cloak>
 
   <div class="header" ng-controller="MenuCtrl">
-    <!--ul class="menu" ng-hide="loggedIn">
-      <li ng-show="loggedIn"><a href="#/home">home</a></li>   ng-show="loggedIn"
-      <li ng-show="loggedIn"><a href="#/lcars">lcars</a></li>
-      <li ng-hide="loggedIn"><a href="#/login">login</a></li>
-      <li><button ng-click="loginWithGoogle()">Login with Google</button></li>
-    </ul-->
     <ul class="menu" >
       <li ng-repeat="item in menu"><a href="{{item.route}}">{{item.label}}</a></li>
     </ul>
@@ -57,5 +51,6 @@
   <script src="login/login.js"></script>
   <script src="partials/device.js"></script>
   <script src="partials/device-history.js"></script>
+  <script src="partials/imageMap.js"></script>
 </body>
 </html>

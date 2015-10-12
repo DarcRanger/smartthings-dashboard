@@ -22,10 +22,17 @@
 		</li>
 	</ul>
 
+	<h2>Image Maps (Floors)</h2>
+	<div class="haImageMaps">
+		<imagemap ng-repeat="config in location.imageMaps" config="config" all-devices="location.current"></imagemap>
+	</div>
+
 	<h2>Devices tiles</h2>
 	<div class="haDeviceTiles">
 		<device ng-repeat="(key, device) in location.current" key="key" device="device"></device>
 	</div>
+
+
 </div>
 
 <div ng-show="deviceHistory">

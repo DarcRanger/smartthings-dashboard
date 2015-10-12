@@ -1,7 +1,7 @@
 (function(angular) {
   "use strict";
 
-  var app = angular.module('myApp.home', ['firebase.auth', 'firebase', 'firebase.utils', 'ngRoute', 'myApp.device', 'myApp.deviceHistory']);
+  var app = angular.module('myApp.home', ['firebase.auth', 'firebase', 'firebase.utils', 'ngRoute', 'myApp.device', 'myApp.deviceHistory', 'myApp.imageMap']);
 
   app.controller('HomeCtrl', ['$scope', 'fbutil', 'user', '$firebaseObject', 'FBURL', '$routeParams',
     function ($scope, fbutil, user, $firebaseObject, FBURL, $routeParams) {
@@ -22,6 +22,8 @@
     if($scope.deviceKey) {
       $scope.deviceHistory = $firebaseObject(fbutil.ref('loc/' + $scope.locationId + '/history/' + $scope.deviceKey));
     }
+
+
 
   }]);
 
