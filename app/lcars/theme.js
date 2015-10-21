@@ -1,10 +1,16 @@
 (function(angular) {
   "use strict";
 
-  var app = angular.module('myApp.themes.lcars', ['firebase', 'firebase.utils', 'ngRoute', 'door3.css', 'myApp.device', 'myApp.deviceHistory']);
+  var app = angular.module('myApp.themes.lcars', ['firebase', 'firebase.utils', 'ngRoute', 'door3.css', 'multi-transclude',
+  'myApp.mainMenu', 'myApp.device', 'myApp.deviceHistory']);
 
-  app.controller('LcarsThemeCtrl', ['$scope', 'fbutil', 'user', '$firebaseObject', 'FBURL', '$routeParams',
-    function ($scope, fbutil, user, $firebaseObject, FBURL, $routeParams) {
+  app.controller('LcarsThemeCtrl', ['$scope', 'fbutil', 'user', '$firebaseObject', 'FBURL', '$routeParams', '$timeout',
+    function ($scope, fbutil, user, $firebaseObject, FBURL, $routeParams, $timeout) {
+
+    // HACK: For some reason Chrome doesn't apply "height: 100%" to the table contents until something changes the display or size attributes
+    $timeout(function() {
+      $scope.hackDelayShow = true;
+    }, 1000);
 
     $scope.debugInfo = $routeParams;
 

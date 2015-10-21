@@ -1,30 +1,66 @@
-<h1>LCARS</h1>
-<ul>
-	<li ng-repeat="(id, name) in locations"><a ng-href="#/home/{{id | encodeURIComponent}}">{{name}}</a></li>
-</ul>
+<script type="text/ng-template" id="lcars">
+	<div class="lcarsPanel">
+		<div class="lcarsHeader">
+			<div class="lcarsLeft">&nbsp;</div>
+			<div class="lcarsCenter" ng-multi-transclude="header"></div>
+			<!--div style="width: 50px;">&nbsp;</div-->
+		</div>
+		<div class="lcarsBody">
+			<div class="lcarsLeft" ng-multi-transclude="left"></div>
+			<div class="lcarsCenter" ng-multi-transclude="center"></div>
+		</div>
+		<div class="lcarsFooter">
+			<div class="lcarsLeft">&nbsp;</div>
+			<div class="lcarsCenter">&nbsp;</div>
+		</div>
+	</div>
+</script>
 
-<div class="lcarsPanel lcarsFloors">
-	<div class="lcarsHeader">
-		<div class="lcarsLeft">&nbsp;</div>
-		<div class="lcarsCenter">Header</div>
+
+
+<div class="haFullScreen" ng-show="hackDelayShow">
+
+	<div id="lcarsFloors" class="lcarsPanel">
+		<div class="lcarsHeader">
+			<div class="lcarsLeft">&nbsp;</div>
+			<div class="lcarsCenter">
+				<mainmenu></mainmenu>
+			</div>
+		</div>
+
+		<div class="lcarsBody">
+			<div class="lcarsLeft">
+				<ul >
+					<li ng-repeat="(id, name) in locations"><a ng-href="#/lcars/{{id | encodeURIComponent}}">{{name}}</a></li>
+				</ul>
+			</div>
+			<div class="lcarsCenter">
+				<imagemap ng-repeat="config in location.imageMaps" config="config" all-devices="location.current"></imagemap>
+			</div>
+		</div>
 	</div>
-	<div class="lcarsBody">
-		<div class="lcarsLeft">Left</div>
-		<div class="lcarsCenter"></div>
+
+	<div id="lcarsHistory" class="lcarsPanel">
+		<div class="lcarsHeader">
+			<div class="lcarsLeft">&nbsp;</div>
+			<div class="lcarsCenter">
+			</div>
+		</div>
+
+		<div class="lcarsBody">
+			<div class="lcarsLeft">
+			</div>
+			<div class="lcarsCenter">
+			</div>
+		</div>
 	</div>
-	<div class="lcarsFooter">
-		<div class="lcarsLeft">&nbsp;</div>
-		<div class="lcarsCenter">&nbsp;</div>
-	</div>
+
 </div>
 
-<div class="lcarsPanel lcarsHistory">
-	<div class="lcarsHeader">
-		<div class="lcarsLeft">&nbsp;</div>
-		<div class="lcarsCenter">Header</div>
-	</div>
-	<div class="lcarsBody">
-		<div class="lcarsLeft">Left</div>
-		<div class="lcarsCenter">&nbsp;</div>
-	</div>
-</div>
+<!--div class="lcarsFloatingCenter" sync-element
+	sync-height="#lcarsFloors .lcarsBody .lcarsLeft"
+	sync-height="#lcarsFloors .lcarsBody .lcarsLeft"
+	sync-height="#lcarsFloors .lcarsBody .lcarsLeft"
+	style="border: 1px solid red;">
+	<imagemap ng-repeat="config in location.imageMaps" config="config" all-devices="location.current"></imagemap>
+</div-->

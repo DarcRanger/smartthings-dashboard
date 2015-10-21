@@ -1,7 +1,8 @@
 (function(angular) {
   "use strict";
 
-  var app = angular.module('myApp.home', ['firebase.auth', 'firebase', 'firebase.utils', 'ngRoute', 'myApp.device', 'myApp.deviceHistory', 'myApp.imageMap']);
+  var app = angular.module('myApp.home', ['firebase.auth', 'firebase', 'firebase.utils',
+    'ngRoute', 'myApp.device', 'myApp.deviceHistory', 'myApp.mainMenu', 'myApp.imageMap']);
 
   app.controller('HomeCtrl', ['$scope', 'fbutil', 'user', '$firebaseObject', 'FBURL', '$routeParams',
     function ($scope, fbutil, user, $firebaseObject, FBURL, $routeParams) {

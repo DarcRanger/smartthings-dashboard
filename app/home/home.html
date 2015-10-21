@@ -1,3 +1,5 @@
+<mainmenu></mainmenu>
+
 <p class="status good" ng-show="loggedIn">Hello! You are logged in with id {{user.uid}}.</p>
 <p class="status" ng-hide="loggedIn">Welcome. You are not <a href="#/login">logged in</a></p>
 
@@ -23,7 +25,7 @@
 	</ul>
 
 	<h2>Image Maps (Floors)</h2>
-	<div class="haImageMaps">
+	<div class="haImageMaps" style="height: 600px;">
 		<imagemap ng-repeat="config in location.imageMaps" config="config" all-devices="location.current"></imagemap>
 	</div>
 

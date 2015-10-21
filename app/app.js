@@ -16,40 +16,6 @@ angular.module('myApp', [
     });
   }])
 
-  // .config(['$locationProvider', function ($locationProvider) {
-  //   $locationProvider
-  //     .html5Mode(true)
-  //     .hashPrefix('!');
-  // }])
-
-	.controller('MenuCtrl', function($scope, $rootScope, $location) {
-
-	  $scope.menu = [
-	    {label:'Home', route:'#/home'},
-	    {label:'LCARS', route:'#/lcars'},
-      {label:'Account', route:'#/account'}
-	   ]
-
-	  $scope.menuActive = '/';
-
-    /*$scope.loginWithGoogle = function() {
-      var ref = new Firebase("https://vivid-heat-1374.firebaseio.com");
-      ref.authWithOAuthRedirect("google", function(error) {
-        if (error) {
-          console.log("Login Failed!", error);
-        } else {
-          // We'll never get here, as the page will redirect on success.
-        }
-      });
-
-      return false;
-    };*/
-
-	  $rootScope.$on('$routeChangeSuccess', function(e, curr, prev) {
-       $scope.menuActive = $location.path();
-    });
-
-	})
 
 	.filter('encodeURIComponent', function() {
     return window.encodeURIComponent;

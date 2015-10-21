@@ -1,36 +1,94 @@
 .lcarsPanel {
   display: table;
   width: 100%;
+  height: 100%;
+  border-radius: 6em 0 0 0;
+
 }
 .lcarsHeader, .lcarsBody, .lcarsFooter {
   display: table-row;
 }
 .lcarsLeft, .lcarsCenter, .lcarsRight {
   display: table-cell;
+  vertical-align: top;
 }
 
 .lcarsLeft {
+  background-color: LightSalmon;
   width: 10em;
 }
 
 .lcarsHeader {
-  height: 1.2em;
+  background-color: LightSalmon;
+}
+.lcarsHeader .lcarsLeft {
+  border-radius: 1000px 0 0 0;
 }
 .lcarsHeader .lcarsCenter {
-  background-color: LightSalmon;
+  border-radius: 0 1000px 1000px 0;
 }
 
 .lcarsBody .lcarsLeft {
-  background-color: LightSalmon;
+}
+.lcarsBody .lcarsLeft:before { /* Inner rounded corner for .lcarsCenter */
+    content: " ";
+    display: block;
+    background: LightSalmon;
+    position: relative;
+    top: 0;
+    left: 3em;
+    width: 3em;
+    height: 3em;
+    z-index: -1;
+    float: right;
+}
+.lcarsBody .lcarsCenter {
+  background-color: white;
+  border-radius: 3em 0 0 0;
+  height: 100%;
+  max-height: 100%;
+  padding: 1em;
+  border: 1px dashed purple;
+}
+
+.lcarsFooter .lcarsLeft {
+}
+.lcarsFooter .lcarsCenter {
+  background-color: white;
 }
 
 
 
 
+#lcarsFloors {
+  height: 66%;
+  max-height: 66%;
+  padding: 5px;
+}
+#lcarsFloors {
+  padding-bottom: 0;
+}
+#lcarsFloors .haImageMap {
+  border: 1px solid green;
+}
+#lcarsFloors .lcarsFooter {
+  display: none;
+}
 
-.lcarsFloors .lcarsBody {
-  height: 400px;
+#lcarsHistory {
+  height: 33%;
+  padding: 5px;
 }
-.lcarsHistory .lcarsBody {
-  height: 200px;
-}
+
+/*.lcarsFloatingCenter {*/
+  /* will be repositioned by javascript */
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 100px;*/
+/*  z-index: 2;*/
+/*}*/
+
+/*.fullheight {*/
+/*  height: 20px;  will be overridden via a directive */
+/*  border: 1px solid red;*/
+/*}*/

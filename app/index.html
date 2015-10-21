@@ -4,7 +4,7 @@
   <!--<base href="/">-->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
+  <title>Fox-Hill Home Automation</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
@@ -14,12 +14,6 @@
 </head>
 <body ng-cloak>
 
-  <div class="header" ng-controller="MenuCtrl">
-    <ul class="menu" >
-      <li ng-repeat="item in menu"><a href="{{item.route}}">{{item.label}}</a></li>
-    </ul>
-  </div>
-
   <div ng-view></div>
 
 
@@ -28,12 +22,14 @@
 <script src="//cdn.firebase.com/js/client/2.2.x/firebase.js"></script>
 <script src="//cdn.firebase.com/libs/angularfire/1.0.x/angularfire.min.js"></script>
 -->
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/firebase/firebase.js"></script>
   <script src="bower_components/angularfire/dist/angularfire.js"></script>
   <script src="bower_components/moment/moment.js"></script>
   <script src="bower_components/angular-css/angular-css.min.js"></script>
+  <script src="bower_components/ng-multi-transclude/src/multi-transclude.js"></script>
 
   <script src="app.js"></script>
   <script src="config.js"></script>
@@ -49,6 +45,7 @@
   <script src="lcars/theme.js"></script>
   <script src="account/account.js"></script>
   <script src="login/login.js"></script>
+  <script src="partials/mainMenu.js"></script>
   <script src="partials/device.js"></script>
   <script src="partials/device-history.js"></script>
   <script src="partials/imageMap.js"></script>

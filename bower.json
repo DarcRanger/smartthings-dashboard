@@ -14,6 +14,8 @@
     "firebase": "2.2.2",
     "angularfire": "~1.0.0",
     "mockfirebase": "~0.10.3",
-    "angular-css": "~1.0.7"
+    "angular-css": "~1.0.7",
+    "ng-multi-transclude": "~0.1.5",
+    "jquery": "~2.1.4"
   }
 }
