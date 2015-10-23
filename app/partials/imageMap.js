@@ -50,7 +50,7 @@
         scope.machineState = 'init';
 
         scope.runStateMachine = function () {
-
+console.log(scope.machineState);
           switch (scope.machineState) {
             case 'init':
               // get the image url

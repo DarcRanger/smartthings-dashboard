@@ -1,94 +1,204 @@
+/* REMINDER: Don't edit the .css, edit the .scss */
+body {
+  background: black;
+  color: Linen; }
+
+/* LCARS Themes */
+.lcarsThemePrimary .lcarsHeader,
+.lcarsThemePrimary .lcarsLeft,
+.lcarsThemePrimary .lcarsFooter,
+.lcarsThemePrimary .lcarsBody .lcarsLeft:before {
+  background-color: #f1df6f;
+  color: black; }
+.lcarsThemePrimary .lcarsTitle {
+  background-color: black;
+  color: #ff9900; }
+.lcarsThemePrimary .lcarsActive:before {
+  background-color: #f1df6f;
+  color: black; }
+
+.lcarsThemeSecondary .lcarsHeader,
+.lcarsThemeSecondary .lcarsLeft,
+.lcarsThemeSecondary .lcarsFooter,
+.lcarsThemeSecondary .lcarsBody .lcarsLeft:before {
+  background-color: #b1957a;
+  color: black; }
+.lcarsThemeSecondary .lcarsTitle {
+  background-color: black;
+  color: #ffcc00; }
+.lcarsThemeSecondary .lcarsActive:before {
+  background-color: #b1957a;
+  color: black; }
+
+.lcarsThemeAncillary .lcarsHeader,
+.lcarsThemeAncillary .lcarsLeft,
+.lcarsThemeAncillary .lcarsFooter,
+.lcarsThemeAncillary .lcarsBody .lcarsLeft:before {
+  background-color: #f1b1af;
+  color: black; }
+.lcarsThemeAncillary .lcarsTitle {
+  background-color: black;
+  color: #ff9900; }
+.lcarsThemeAncillary .lcarsActive:before {
+  background-color: #f1b1af;
+  color: black; }
+
+.lcarsThemeDatabase .lcarsHeader,
+.lcarsThemeDatabase .lcarsLeft,
+.lcarsThemeDatabase .lcarsFooter,
+.lcarsThemeDatabase .lcarsBody .lcarsLeft:before {
+  background-color: #cc6666;
+  color: black; }
+.lcarsThemeDatabase .lcarsTitle {
+  background-color: black;
+  color: #ff9900; }
+.lcarsThemeDatabase .lcarsActive:before {
+  background-color: #cc6666;
+  color: black; }
+
+/* LCARS Common */
 .lcarsPanel {
   display: table;
   width: 100%;
   height: 100%;
   border-radius: 6em 0 0 0;
+  font-family: 'Oswald', Impact, Charcoal, sans-serif;
+  box-sizing: border-box;
+  padding: 5px; }
 
-}
-.lcarsHeader, .lcarsBody, .lcarsFooter {
-  display: table-row;
-}
-.lcarsLeft, .lcarsCenter, .lcarsRight {
+.lcarsHeader,
+.lcarsBody,
+.lcarsFooter {
+  display: table-row; }
+
+.lcarsLeft,
+.lcarsCenter,
+.lcarsRight {
   display: table-cell;
-  vertical-align: top;
-}
+  vertical-align: top; }
 
 .lcarsLeft {
-  background-color: LightSalmon;
-  width: 10em;
-}
+  width: 10em; }
 
-.lcarsHeader {
-  background-color: LightSalmon;
-}
 .lcarsHeader .lcarsLeft {
-  border-radius: 1000px 0 0 0;
-}
+  border-radius: 1000px 0 0 0; }
 .lcarsHeader .lcarsCenter {
   border-radius: 0 1000px 1000px 0;
-}
+  padding-left: 3em; }
+.lcarsHeader .lcarsMenuIcon {
+  float: right;
+  padding-left: .5em;
+  padding-right: .5em;
+  font-size: 1.5em;
+  margin-left: -2em; }
+.lcarsHeader .lcarsTitle {
+  float: right;
+  margin-right: 2em;
+  padding-left: .5em;
+  padding-right: .5em;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  text-transform: uppercase; }
 
-.lcarsBody .lcarsLeft {
-}
-.lcarsBody .lcarsLeft:before { /* Inner rounded corner for .lcarsCenter */
-    content: " ";
-    display: block;
-    background: LightSalmon;
-    position: relative;
-    top: 0;
-    left: 3em;
-    width: 3em;
-    height: 3em;
-    z-index: -1;
-    float: right;
-}
+.lcarsBody .lcarsLeft ul {
+  list-style: none;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  margin: 2em 0 0 0;
+  padding: 0; }
+  .lcarsBody .lcarsLeft ul li:first-of-type {
+    border-top: 2px solid black; }
+  .lcarsBody .lcarsLeft ul li {
+    border-bottom: 2px solid black;
+    padding: 0 .25em 0 .25em; }
+.lcarsBody .lcarsLeft:before {
+  /* Inner rounded corner for .lcarsCenter */
+  content: " ";
+  display: block;
+  position: relative;
+  top: 0;
+  left: 3em;
+  width: 3em;
+  height: 3em;
+  z-index: -1;
+  float: right; }
 .lcarsBody .lcarsCenter {
-  background-color: white;
+  background-color: black;
   border-radius: 3em 0 0 0;
   height: 100%;
   max-height: 100%;
-  padding: 1em;
-  border: 1px dashed purple;
-}
+  padding: .25em 1.75em;
+  overflow: hidden; }
 
-.lcarsFooter .lcarsLeft {
-}
 .lcarsFooter .lcarsCenter {
-  background-color: white;
-}
+  background-color: black; }
 
+.lcarsActive:before {
+  /* bubble for left menu */
+  border-radius: 0 1000px 1000px 0;
+  content: "\00a0";
+  /* whitespace */
+  display: block;
+  position: relative;
+  top: 0;
+  left: 1.35em;
+  width: 1em;
+  float: right;
+  z-index: 9; }
 
+.shrinkForMenu {
+  width: calc(100% - 20em); }
 
+/* override default menu formatting */
+.menu {
+  list-style: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  font-size: 1.5em; }
 
+.menu:before {
+  content: ""; }
+
+.menu:after {
+  content: ""; }
+
+.menu > li:first-of-type {
+  border-left: 2px solid black; }
+
+.menu > li {
+  border-right: 2px solid black;
+  padding: 0 .25em 0 .25em; }
+
+.menu > li:before {
+  content: "";
+  padding: 0; }
+
+/* floor (upper) panel */
 #lcarsFloors {
   height: 66%;
-  max-height: 66%;
-  padding: 5px;
-}
+  max-height: 66%; }
+
 #lcarsFloors {
-  padding-bottom: 0;
-}
+  padding-bottom: 0; }
+
 #lcarsFloors .haImageMap {
-  border: 1px solid green;
-}
+  color: blue; }
+
 #lcarsFloors .lcarsFooter {
-  display: none;
-}
+  display: none; }
 
+/* history (lower) panel */
 #lcarsHistory {
-  height: 33%;
-  padding: 5px;
-}
+  height: 33%; }
 
-/*.lcarsFloatingCenter {*/
-  /* will be repositioned by javascript */
-/*  position: absolute;*/
-/*  top: 0;*/
-/*  left: 100px;*/
-/*  z-index: 2;*/
-/*}*/
+#lcarsMenu {
+  width: 20em;
+  height: 100%;
+  float: right; }
+  #lcarsMenu .lcarsLeft {
+    width: 1em;
+    max-width: 1em; }
 
-/*.fullheight {*/
-/*  height: 20px;  will be overridden via a directive */
-/*  border: 1px solid red;*/
-/*}*/
+/*# sourceMappingURL=theme.css.map */

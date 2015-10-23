@@ -13,6 +13,7 @@
     }, 1000);
 
     $scope.debugInfo = $routeParams;
+    $scope.showMenu = !$routeParams.location;
 
     $scope.locations = $firebaseObject(fbutil.ref('locations'));
     $scope.user = user;
