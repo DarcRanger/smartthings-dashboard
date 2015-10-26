@@ -17,7 +17,7 @@
 
 	<h2>Devices as a list</h2>
 	<ul>
-		<li ng-repeat="(key, device) in location.current">
+		<li ng-repeat="(key, device) in devices">
 			<device key="key" device="device">
 			 	<a ng-href="#/home/{{locationId | encodeURIComponent}}/{{key | encodeURIComponent}}">Select</a> &rarr;
 			 </device>
@@ -26,12 +26,12 @@
 
 	<h2>Image Maps (Floors)</h2>
 	<div class="haImageMaps" style="height: 600px;">
-		<imagemap ng-repeat="config in location.imageMaps" config="config" all-devices="location.current"></imagemap>
+		<imagemap ng-repeat="config in imageMaps" config="config" all-devices="devices"></imagemap>
 	</div>
 
 	<h2>Devices tiles</h2>
 	<div class="haDeviceTiles">
-		<device ng-repeat="(key, device) in location.current" key="key" device="device"></device>
+		<device ng-repeat="(key, device) in devices" key="key" device="device"></device>
 	</div>
 
 

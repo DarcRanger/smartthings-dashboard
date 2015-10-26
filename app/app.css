@@ -1,133 +1,148 @@
 /* app css stylesheet */
-
 body {
-  margin: 10px;
-}
+  margin: 10px; }
 
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
   margin-bottom: 2em;
-  padding: 0 0 0.5em;
-}
+  padding: 0 0 0.5em; }
 
 .menu:before {
-  content: "[";
-}
+  content: "["; }
 
 .menu:after {
-  content: "]";
-}
+  content: "]"; }
 
 .menu > li {
-  display: inline;
-}
+  display: inline; }
 
 .menu > li.hide {
-   display: none;
-}
+  display: none; }
 
 .menu > li:before {
   content: "|";
-  padding-right: 0.3em;
-}
+  padding-right: 0.3em; }
 
 .menu > li:nth-child(1):before {
   content: "";
-  padding: 0;
-}
+  padding: 0; }
 
 p.status {
-   color: red;
-}
+  color: red; }
 
 p.status.good, p.good {
-   color: green;
-}
+  color: green; }
 
 form label {
-   display: block;
-   margin: 15px 0;
-}
+  display: block;
+  margin: 15px 0; }
 
 form label span {
-   display: block;
-   font-weight: bold;
-}
+  display: block;
+  font-weight: bold; }
 
 .error {
-   color: red;
-}
+  color: red; }
 
 fieldset {
-   float: left;
-   margin-right: 25px;
-   padding: 25px;
-}
+  float: left;
+  margin-right: 25px;
+  padding: 25px; }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-    display: none !important;
-}
+  display: none !important; }
 
 /* floats */
 h1, h2, h3, h4 {
-  clear: both;
-}
+  clear: both; }
 
 /* device symbols*/
-.haDevice[data-deviceType=temperature] .haDeviceValue::after  {
-  content: '\00b0';
-}
+.haDevice[data-deviceType=temperature] .haDeviceValue::after {
+  content: '\00b0'; }
 
-.haDevice[data-deviceType=humidity] .haDeviceValue::after  {
-  content: '%';
-}
+.haDevice[data-deviceType=humidity] .haDeviceValue::after {
+  content: '%'; }
 
-.haDevice[data-deviceType=battery] .haDeviceValue::after  {
-  content: '%';
-}
-
+.haDevice[data-deviceType=battery] .haDeviceValue::after {
+  content: '%'; }
 
 /* Device Tiles */
-.haDeviceTiles device  {
+.haDeviceTiles device {
   border: 1px solid black;
   display: block;
   float: left;
   width: 8em;
   height: 8em;
   margin: .25em;
-  padding: .25em;
-}
+  padding: .25em; }
 
 .haDeviceTiles device .haDevice {
   position: relative;
-  height: 100%;
-}
-.haDeviceTiles device .haDevice .haDeviceUpdated  {
+  height: 100%; }
+
+.haDeviceTiles device .haDevice .haDeviceUpdated {
   font-size: .7em;
   position: absolute;
   bottom: 0;
-  right: 0;
-}
-.haDeviceTiles device .haDevice .haDeviceName  {
+  right: 0; }
+
+.haDeviceTiles device .haDevice .haDeviceName {
   font-size: 1em;
   position: absolute;
   top: 0;
-  left: 0;
-}
-.haDeviceTiles device .haDevice .haDeviceType  {
+  left: 0; }
+
+.haDeviceTiles device .haDevice .haDeviceType {
   font-size: .7em;
   position: absolute;
   bottom: 0;
-  left: 0;
-}
-.haDeviceTiles device .haDevice .haDeviceValue  {
+  left: 0; }
+
+.haDeviceTiles device .haDevice .haDeviceValue {
   font-size: 2em;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-}
+  transform: translate(-50%, -50%); }
+
+.haImageMapTile .haDevice[data-devicetype="lock"][data-value="locked"] .haDeviceValue .haText,
+.haImageMapTile .haDevice[data-devicetype="lock"][data-value="unlocked"] .haDeviceValue .haText,
+.haImageMapTile .haDevice[data-devicetype="motion"][data-value="inactive"] .haDeviceValue .haText,
+.haImageMapTile .haDevice[data-devicetype="motion"][data-value="active"] .haDeviceValue .haText,
+.haImageMapTile .haDevice[data-devicetype="contact"][data-value="closed"] .haDeviceValue .haText,
+.haImageMapTile .haDevice[data-devicetype="contact"][data-value="open"] .haDeviceValue .haText,
+.haDeviceTiles .haDevice[data-devicetype="lock"][data-value="locked"] .haDeviceValue .haText,
+.haDeviceTiles .haDevice[data-devicetype="lock"][data-value="unlocked"] .haDeviceValue .haText,
+.haDeviceTiles .haDevice[data-devicetype="motion"][data-value="inactive"] .haDeviceValue .haText,
+.haDeviceTiles .haDevice[data-devicetype="motion"][data-value="active"] .haDeviceValue .haText,
+.haDeviceTiles .haDevice[data-devicetype="contact"][data-value="closed"] .haDeviceValue .haText,
+.haDeviceTiles .haDevice[data-devicetype="contact"][data-value="open"] .haDeviceValue .haText {
+  display: none; }
+.haImageMapTile .haDevice[data-devicetype="contact"][data-value="closed"] .haDeviceValue:before,
+.haDeviceTiles .haDevice[data-devicetype="contact"][data-value="closed"] .haDeviceValue:before {
+  content: "\f051\f048";
+  font: normal normal normal 1em FontAwesome; }
+.haImageMapTile .haDevice[data-devicetype="contact"][data-value="open"] .haDeviceValue:before,
+.haDeviceTiles .haDevice[data-devicetype="contact"][data-value="open"] .haDeviceValue:before {
+  content: "\f04a\00a0\f04e";
+  font: normal normal normal 1em FontAwesome; }
+.haImageMapTile .haDevice[data-devicetype="lock"][data-value="locked"] .haDeviceValue:before,
+.haDeviceTiles .haDevice[data-devicetype="lock"][data-value="locked"] .haDeviceValue:before {
+  content: "\f023";
+  font: normal normal normal 1em FontAwesome; }
+.haImageMapTile .haDevice[data-devicetype="lock"][data-value="unlocked"] .haDeviceValue:before,
+.haDeviceTiles .haDevice[data-devicetype="lock"][data-value="unlocked"] .haDeviceValue:before {
+  content: "\f09c";
+  font: normal normal normal 1em FontAwesome; }
+.haImageMapTile .haDevice[data-devicetype="motion"][data-value="inactive"] .haDeviceValue:before,
+.haDeviceTiles .haDevice[data-devicetype="motion"][data-value="inactive"] .haDeviceValue:before {
+  content: "\f070";
+  font: normal normal normal 1em FontAwesome; }
+.haImageMapTile .haDevice[data-devicetype="motion"][data-value="active"] .haDeviceValue:before,
+.haDeviceTiles .haDevice[data-devicetype="motion"][data-value="active"] .haDeviceValue:before {
+  content: "\f06e";
+  font: normal normal normal 1em FontAwesome; }
 
 .haFullScreen {
   position: fixed;
@@ -136,29 +151,49 @@ h1, h2, h3, h4 {
   bottom: 0;
   right: 0;
   margin: 0;
-  /*border: 1px solid red;*/
-}
+  /*border: 1px solid red;*/ }
+
+.haTableLayout {
+  display: table;
+  height: 100%;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.haRow {
+  display: table-row; }
+
+.haCol {
+  display: table-column; }
+
+.haCell {
+  display: table-cell;
+  height: 100%; }
 
 /* Image Maps */
-
-
 div.haImageMap {
-  width: 1px; /* reset via scaleToBackground javascript */
+  width: 1px;
+  /* reset via scaleToBackground javascript */
   height: 100%;
   /* background image set via angularjs */
   background-size: contain;
   background-repeat: no-repeat;
   float: left;
   position: relative;
-  overflow: hidden;
-}
+  overflow: hidden; }
+
 imagemap img {
   height: 100%;
   max-height: 100%;
-  max-width: 100%;
-}
+  max-width: 100%; }
 
-device.haMiniDeviceTile .haDeviceUpdated { display: none; }
-device.haMiniDeviceTile .haDeviceName { display: none; }
-device.haMiniDeviceTile .haDeviceType { display: none; }
+device.haMiniDeviceTile .haDeviceUpdated {
+  display: none; }
 
+device.haMiniDeviceTile .haDeviceName {
+  display: none; }
+
+device.haMiniDeviceTile .haDeviceType {
+  display: none; }
+
+/*# sourceMappingURL=app.css.map */

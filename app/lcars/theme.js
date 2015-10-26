@@ -4,8 +4,8 @@
   var app = angular.module('myApp.themes.lcars', ['firebase', 'firebase.utils', 'ngRoute', 'door3.css', 'multi-transclude',
   'myApp.mainMenu', 'myApp.device', 'myApp.deviceHistory']);
 
-  app.controller('LcarsThemeCtrl', ['$scope', 'fbutil', 'user', '$firebaseObject', 'FBURL', '$routeParams', '$timeout',
-    function ($scope, fbutil, user, $firebaseObject, FBURL, $routeParams, $timeout) {
+  app.controller('LcarsThemeCtrl', ['$scope', 'fbutil', 'user', '$firebaseObject', '$firebaseArray', 'FBURL', '$routeParams', '$timeout',
+    function ($scope, fbutil, user, $firebaseObject, $firebaseArray, FBURL, $routeParams, $timeout) {
 
     // HACK: For some reason Chrome doesn't apply "height: 100%" to the table contents until something changes the display or size attributes
     $timeout(function() {
@@ -23,7 +23,28 @@
     $scope.deviceKey = $routeParams.deviceKey;
 
     if($scope.locationId) {
-      $scope.location = $firebaseObject(fbutil.ref('loc/'+$scope.locationId));
+      $scope.location = $firebaseObject(fbutil.ref('loc/'+$scope.locationId+'/info'));
+      $scope.devices = $firebaseObject(fbutil.ref('loc/'+$scope.locationId+'/current'));
+      $scope.imageMaps = $firebaseArray(fbutil.ref('loc/'+$scope.locationId+'/imageMaps'));
+      $scope.deviceTypes = [];
+
+      $scope.devices.$loaded()
+        .then(function(data) {
+
+          var deviceTypes = {};
+          data.forEach(function(x) {
+            deviceTypes[x.deviceType] = true;
+          });
+
+          var defaultTypes = ['temperature','contact','lock','humidity'];
+
+          $.each(deviceTypes, function(x) {
+            $scope.deviceTypes.push({
+              name: x,
+              enabled: defaultTypes.indexOf(x) !== -1,
+            });
+          });
+        });
     }
 
     if($scope.deviceKey) {

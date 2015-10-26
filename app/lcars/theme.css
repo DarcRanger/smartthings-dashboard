@@ -4,19 +4,28 @@ body {
   color: Linen; }
 
 /* LCARS Themes */
+.lcarsThemePrimary .lcarsPanel {
+  background-color: black;
+  color: #ffc464; }
 .lcarsThemePrimary .lcarsHeader,
 .lcarsThemePrimary .lcarsLeft,
 .lcarsThemePrimary .lcarsFooter,
 .lcarsThemePrimary .lcarsBody .lcarsLeft:before {
-  background-color: #f1df6f;
+  background-color: #ffc464;
   color: black; }
 .lcarsThemePrimary .lcarsTitle {
   background-color: black;
   color: #ff9900; }
 .lcarsThemePrimary .lcarsActive:before {
-  background-color: #f1df6f;
+  background-color: #ffc464;
   color: black; }
+.lcarsThemePrimary .lcarsBody .lcarsCenter {
+  background-color: black;
+  color: #ffc464; }
 
+.lcarsThemeSecondary .lcarsPanel {
+  background-color: black;
+  color: #b1957a; }
 .lcarsThemeSecondary .lcarsHeader,
 .lcarsThemeSecondary .lcarsLeft,
 .lcarsThemeSecondary .lcarsFooter,
@@ -29,7 +38,13 @@ body {
 .lcarsThemeSecondary .lcarsActive:before {
   background-color: #b1957a;
   color: black; }
+.lcarsThemeSecondary .lcarsBody .lcarsCenter {
+  background-color: black;
+  color: #b1957a; }
 
+.lcarsThemeAncillary .lcarsPanel {
+  background-color: black;
+  color: #f1b1af; }
 .lcarsThemeAncillary .lcarsHeader,
 .lcarsThemeAncillary .lcarsLeft,
 .lcarsThemeAncillary .lcarsFooter,
@@ -42,7 +57,13 @@ body {
 .lcarsThemeAncillary .lcarsActive:before {
   background-color: #f1b1af;
   color: black; }
+.lcarsThemeAncillary .lcarsBody .lcarsCenter {
+  background-color: black;
+  color: #f1b1af; }
 
+.lcarsThemeDatabase .lcarsPanel {
+  background-color: black;
+  color: #cc6666; }
 .lcarsThemeDatabase .lcarsHeader,
 .lcarsThemeDatabase .lcarsLeft,
 .lcarsThemeDatabase .lcarsFooter,
@@ -55,6 +76,9 @@ body {
 .lcarsThemeDatabase .lcarsActive:before {
   background-color: #cc6666;
   color: black; }
+.lcarsThemeDatabase .lcarsBody .lcarsCenter {
+  background-color: black;
+  color: #cc6666; }
 
 /* LCARS Common */
 .lcarsPanel {
@@ -78,7 +102,8 @@ body {
   vertical-align: top; }
 
 .lcarsLeft {
-  width: 10em; }
+  width: 10em;
+  max-width: 10em; }
 
 .lcarsHeader .lcarsLeft {
   border-radius: 1000px 0 0 0; }
@@ -110,7 +135,9 @@ body {
     border-top: 2px solid black; }
   .lcarsBody .lcarsLeft ul li {
     border-bottom: 2px solid black;
-    padding: 0 .25em 0 .25em; }
+    padding: 0 .25em 0 .25em;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
 .lcarsBody .lcarsLeft:before {
   /* Inner rounded corner for .lcarsCenter */
   content: " ";
@@ -147,7 +174,7 @@ body {
   z-index: 9; }
 
 .shrinkForMenu {
-  width: calc(100% - 20em); }
+  width: calc(100% - 21em); }
 
 /* override default menu formatting */
 .menu {
@@ -175,6 +202,9 @@ body {
   content: "";
   padding: 0; }
 
+.clickable {
+  cursor: pointer; }
+
 /* floor (upper) panel */
 #lcarsFloors {
   height: 66%;
@@ -182,9 +212,6 @@ body {
 
 #lcarsFloors {
   padding-bottom: 0; }
-
-#lcarsFloors .haImageMap {
-  color: blue; }
 
 #lcarsFloors .lcarsFooter {
   display: none; }
@@ -196,7 +223,10 @@ body {
 #lcarsMenu {
   width: 20em;
   height: 100%;
-  float: right; }
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  right: 1em; }
   #lcarsMenu .lcarsLeft {
     width: 1em;
     max-width: 1em; }

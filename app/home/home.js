@@ -4,8 +4,8 @@
   var app = angular.module('myApp.home', ['firebase.auth', 'firebase', 'firebase.utils',
     'ngRoute', 'myApp.device', 'myApp.deviceHistory', 'myApp.mainMenu', 'myApp.imageMap']);
 
-  app.controller('HomeCtrl', ['$scope', 'fbutil', 'user', '$firebaseObject', 'FBURL', '$routeParams',
-    function ($scope, fbutil, user, $firebaseObject, FBURL, $routeParams) {
+  app.controller('HomeCtrl', ['$scope', 'fbutil', 'user', '$firebaseObject', '$firebaseArray', 'FBURL', '$routeParams',
+    function ($scope, fbutil, user, $firebaseObject, $firebaseArray, FBURL, $routeParams) {
 
     $scope.debugInfo = $routeParams;
 
@@ -17,7 +17,9 @@
     $scope.deviceKey = $routeParams.deviceKey;
 
     if($scope.locationId) {
-      $scope.location = $firebaseObject(fbutil.ref('loc/'+$scope.locationId));
+      $scope.location = $firebaseObject(fbutil.ref('loc/'+$scope.locationId+'/info'));
+      $scope.devices = $firebaseObject(fbutil.ref('loc/'+$scope.locationId+'/current'));
+      $scope.imageMaps = $firebaseArray(fbutil.ref('loc/'+$scope.locationId+'/imageMaps'));
     }
 
     if($scope.deviceKey) {

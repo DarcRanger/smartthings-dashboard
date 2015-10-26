@@ -1,30 +1,10 @@
-<script type="text/ng-template" id="lcars">
-	<div class="lcarsPanel">
-		<div class="lcarsHeader">
-			<div class="lcarsLeft">&nbsp;</div>
-			<div class="lcarsCenter" ng-multi-transclude="header"></div>
-			<!--div style="width: 50px;">&nbsp;</div-->
-		</div>
-		<div class="lcarsBody">
-			<div class="lcarsLeft" ng-multi-transclude="left"></div>
-			<div class="lcarsCenter" ng-multi-transclude="center"></div>
-		</div>
-		<div class="lcarsFooter">
-			<div class="lcarsLeft">&nbsp;</div>
-			<div class="lcarsCenter">&nbsp;</div>
-		</div>
-	</div>
-</script>
-
-
-
 <div class="haFullScreen" ng-show="hackDelayShow">
 
 	<div id="lcarsMenu" class="lcarsPanel lcarsThemeAncillary" ng-show="showMenu">
 		<div class="lcarsHeader">
 			<div class="lcarsLeft">&nbsp;</div>
 			<div class="lcarsCenter">
-				<span class="lcarsTitle">Nav Menu</span>
+				<span class="lcarsTitle clickable" ng-click="showMenu = !showMenu">Nav Menu</span>
 			</div>
 		</div>
 
@@ -45,26 +25,30 @@
 		<div class="lcarsHeader">
 			<div class="lcarsLeft">&nbsp;</div>
 			<div class="lcarsCenter">
-				<span class="lcarsMenuIcon" ng-click="showMenu = !showMenu"><i class="fa fa-bars"></i></span>
-				<span class="lcarsTitle" ng-click="showMenu = !showMenu">{{location.name}}</span>
+				<span class="lcarsMenuIcon clickable" ng-click="showMenu = !showMenu"><i class="fa fa-bars"></i></span>
+				<span class="lcarsTitle clickable" ng-click="showMenu = !showMenu">{{location.name}}</span>
 			</div>
 		</div>
 
 		<div class="lcarsBody">
 			<div class="lcarsLeft">
 				<ul >
-					<li>Doors</li> <!-- locks & contacts -->
+					<!--<li>Doors</li>
 					<li>Lights</li>
 					<li class="lcarsActive">Motion</li>
 					<li>Temperature</li>
 					<li>Humidity</li>
-					<li class="lcarsActive">Fire</li> <!-- smoke & co -->
-					<li class="lcarsActive">Batteries</li>
-
+					<li class="lcarsActive">Fire</li>
+					<li class="lcarsActive">Batteries</li>-->
+					<li ng-repeat="deviceType in deviceTypes | orderBy: 'name'" ng-class="{lcarsActive: deviceType.enabled}" class="clickable" ng-click="deviceType.enabled = !deviceType.enabled">{{deviceType.name}}</li>
 				</ul>
 			</div>
 			<div class="lcarsCenter">
-				<imagemap ng-repeat="config in location.imageMaps" config="config" all-devices="location.current"></imagemap>
+				<div class="haTableLayout">
+					<div class="haRow">
+						<imagemap class="haCell" ng-repeat="config in imageMaps" config="config" all-devices="devices"></imagemap>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -95,6 +79,11 @@ Font:
 http://www.fonts.com/font/bitstream/swiss-911/ultra-compressed/web-font
 
 Icons:
+http://www.entypo.com/
 http://fontawesome.io/icons/
 https://erikflowers.github.io/weather-icons/
+
+Layout?
+http://lorenzofox3.github.io/flexy-layout/src/index.html
+
 -->

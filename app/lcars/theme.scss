@@ -10,32 +10,45 @@ body {
 /* LCARS Themes */
 $themes: ((
   class: lcarsThemePrimary,
-  elboBackColor: #f1df6f,
+  elboBackColor: #ffc464,
   elboTextColor: $mainBlackColor,
   titleBackColor: $mainBlackColor,
   titleTextColor: #ff9900,
+  contentBackColor: $mainBlackColor,
+  contentTextColor: #ffc464,
 ), (
   class: lcarsThemeSecondary,
   elboBackColor: #b1957a,
   elboTextColor: $mainBlackColor,
   titleBackColor: $mainBlackColor,
   titleTextColor: #ffcc00,
+  contentBackColor: $mainBlackColor,
+  contentTextColor: #b1957a,
 ), (
   class: lcarsThemeAncillary,
   elboBackColor: #f1b1af,
   elboTextColor: $mainBlackColor,
   titleBackColor: $mainBlackColor,
   titleTextColor: #ff9900,
+  contentBackColor: $mainBlackColor,
+  contentTextColor: #f1b1af,
 ), (
   class: lcarsThemeDatabase,
   elboBackColor: #cc6666,
   elboTextColor: $mainBlackColor,
   titleBackColor: $mainBlackColor,
   titleTextColor: #ff9900,
+  contentBackColor: $mainBlackColor,
+  contentTextColor: #cc6666,
 ));
 
 @each $theme in $themes {
   .#{map-get($theme, class)} {
+    .lcarsPanel {
+      background-color: map-get($theme, contentBackColor);
+      color: map-get($theme, contentTextColor);
+    }
+
     .lcarsHeader,
     .lcarsLeft,
     .lcarsFooter,
@@ -43,13 +56,20 @@ $themes: ((
       background-color: map-get($theme, elboBackColor);
       color: map-get($theme, elboTextColor);
     }
+
     .lcarsTitle {
       background-color: map-get($theme, titleBackColor);
       color: map-get($theme, titleTextColor);
     }
+
     .lcarsActive:before {
       background-color: map-get($theme, elboBackColor);
       color: map-get($theme, elboTextColor);
+    }
+
+    .lcarsBody .lcarsCenter {
+      background-color: map-get($theme, contentBackColor);
+      color: map-get($theme, contentTextColor);
     }
   }
 }
@@ -81,6 +101,7 @@ $themes: ((
 
 .lcarsLeft {
   width: 10em;
+  max-width: 10em;
 }
 
 .lcarsHeader {
@@ -122,7 +143,9 @@ $themes: ((
       }
       li {
         border-bottom: 2px solid $mainBlackColor;
-      padding: 0 .25em 0 .25em;
+        padding: 0 .25em 0 .25em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
     }
   }
@@ -168,7 +191,7 @@ $themes: ((
 }
 
 .shrinkForMenu {
-  width: calc(100% - 20em);
+  width: calc(100% - 21em);
 }
 
 
@@ -201,7 +224,9 @@ $themes: ((
   padding: 0;
 }
 
-
+.clickable {
+  cursor: pointer;
+}
 
 /* floor (upper) panel */
 
@@ -212,9 +237,9 @@ $themes: ((
 #lcarsFloors {
   padding-bottom: 0;
 }
-#lcarsFloors .haImageMap {
-  color: blue;
-}
+// #lcarsFloors .haImageMap {
+//   color: blue;
+// }
 #lcarsFloors .lcarsFooter {
   display: none;
 }
@@ -227,7 +252,10 @@ $themes: ((
 #lcarsMenu {
   width: 20em;
   height: 100%;
-  float: right;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  right: 1em;
 
   .lcarsLeft {
     width: 1em;
