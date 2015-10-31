@@ -2,7 +2,7 @@
   "use strict";
 
   var app = angular.module('myApp.themes.lcars', ['firebase', 'firebase.utils', 'ngRoute', 'door3.css', 'multi-transclude',
-  'myApp.mainMenu', 'myApp.device', 'myApp.deviceHistory']);
+  'myApp.mainMenu', 'myApp.device', 'myApp.deviceHistory', 'myApp.lcarsPanel']);
 
   app.controller('LcarsThemeCtrl', ['$scope', 'fbutil', 'user', '$firebaseObject', '$firebaseArray', 'FBURL', '$routeParams', '$timeout',
     function ($scope, fbutil, user, $firebaseObject, $firebaseArray, FBURL, $routeParams, $timeout) {
@@ -13,11 +13,15 @@
     }, 1000);
 
     $scope.debugInfo = $routeParams;
-    $scope.showMenu = !$routeParams.location;
+    $scope.showMenu = !$routeParams.location; // || true;
 
     $scope.locations = $firebaseObject(fbutil.ref('locations'));
     $scope.user = user;
     $scope.FBURL = FBURL;
+
+    $scope.toggleMenu = function() {
+      $scope.showMenu = !$scope.showMenu;
+    }
 
     $scope.locationId = $routeParams.location;
     $scope.deviceKey = $routeParams.deviceKey;
@@ -49,6 +53,10 @@
 
     if($scope.deviceKey) {
       $scope.deviceHistory = $firebaseObject(fbutil.ref('loc/' + $scope.locationId + '/history/' + $scope.deviceKey));
+    }
+
+    $scope.test = function(x) {
+      console.log('>>>>', x);
     }
 
   }]);

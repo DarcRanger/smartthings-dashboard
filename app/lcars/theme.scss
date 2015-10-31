@@ -132,6 +132,7 @@ $themes: ((
 
 .lcarsBody {
   .lcarsLeft {
+    // text-align: left;
     ul {
       list-style: none;
       text-transform: uppercase;
@@ -231,34 +232,100 @@ $themes: ((
 /* floor (upper) panel */
 
 #lcarsFloors {
-  height: 66%;
-  max-height: 66%;
+  flex-grow: 2;
+  flex-shrink: 2;
+  flex-basis: 66%;
+  // height: 66%;
+  // max-height: 66%;
 }
-#lcarsFloors {
-  padding-bottom: 0;
+#lcarsFloors lcars-panel {
+  // padding-bottom: 0;
 }
 // #lcarsFloors .haImageMap {
 //   color: blue;
 // }
 #lcarsFloors .lcarsFooter {
-  display: none;
+  // display: none;
 }
 
 /* history (lower) panel */
-#lcarsHistory {
-  height: 33%;
+#lcarsData {
+  flex-basis: 33%;
 }
 
 #lcarsMenu {
   width: 20em;
-  height: 100%;
+  flex-grow: 0;
+  /*height: 100%;
   z-index: 10;
   position: absolute;
   top: 0;
-  right: 1em;
+  right: 1em;*/
 
   .lcarsLeft {
-    width: 1em;
-    max-width: 1em;
+    width: .5em;
+    max-width: .5em;
   }
+  .menu li {
+    display: block;
+  }
+}
+
+
+.haWrapperVert {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+
+  font-weight: bold;
+  text-align: center;
+}
+
+.haWrapperHoriz {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+
+  font-weight: bold;
+  text-align: left;
+  height: 100%;
+}
+
+.haWrapperHoriz > *,
+.haWrapperVert > * {
+  margin: 0;
+  padding: 0;
+  flex: 1 1 100%;
+  position: relative;
+}
+
+.haWrapperHoriz > * > *,
+.haWrapperVert > * > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+/*.haWrapperHoriz > * {
+  width: 100%;
+}*/
+
+.haWrapperVert > * {
+  height:  100%;
+}
+
+.haWrappedCell {
+  flex: 1 1 auto;
+  // border: 1px solid red;
 }

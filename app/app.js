@@ -7,7 +7,8 @@ angular.module('myApp', [
     'myApp.home',
     'myApp.account',
     'myApp.login',
-    'myApp.themes.lcars'
+    'myApp.themes.lcars',
+    'myApp.lcarsPanel'
   ])
 
   .config(['$routeProvider', function ($routeProvider) {

@@ -1,0 +1,19 @@
+<div class="lcarsPanel ">
+	<div class="lcarsHeader">
+		<div class="lcarsLeft">&nbsp;</div>
+		<div class="lcarsCenter">
+			<span class="lcarsMenuIcon clickable" ng-click="titleClick()"><i ng-class="titleSymbol"></i></span>
+			<span class="lcarsTitle clickable" ng-click="titleClick()" ng-show="titleSymbol">{{title}}</span>
+		</div>
+	</div>
+
+	<div class="lcarsBody">
+		<div class="lcarsLeft">
+			<ul >
+				<li ng-repeat="item in leftMenu | orderBy: 'name'" ng-class="{lcarsActive: item.enabled}" class="clickable" ng-click="item.enabled = !item.enabled">{{item.name}}</li>
+			</ul>
+		</div>
+		<div class="lcarsCenter" ng-transclude>
+		</div>
+	</div>
+</div>

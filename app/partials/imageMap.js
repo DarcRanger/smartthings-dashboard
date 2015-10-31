@@ -9,8 +9,9 @@
     return {
       restrict: 'E',
       scope: {
-        config: '=config',
-        allDevices: '=allDevices'
+        mapLayout: '=',
+        allDevices: '=',
+        groupClick: '&'
       },
       transclude: true,
       templateUrl: 'partials/imageMap.html',
@@ -50,7 +51,6 @@
         scope.machineState = 'init';
 
         scope.runStateMachine = function () {
-console.log(scope.machineState);
           switch (scope.machineState) {
             case 'init':
               // get the image url

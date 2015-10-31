@@ -1,74 +1,40 @@
-<div class="haFullScreen" ng-show="hackDelayShow">
-
-	<div id="lcarsMenu" class="lcarsPanel lcarsThemeAncillary" ng-show="showMenu">
-		<div class="lcarsHeader">
-			<div class="lcarsLeft">&nbsp;</div>
-			<div class="lcarsCenter">
-				<span class="lcarsTitle clickable" ng-click="showMenu = !showMenu">Nav Menu</span>
-			</div>
-		</div>
-
-		<div class="lcarsBody">
-			<div class="lcarsLeft">
-			</div>
-			<div class="lcarsCenter">
-				<mainmenu></mainmenu>
-
-				<ul >
-					<li ng-repeat="(id, name) in locations"><a ng-href="#/lcars/{{id | encodeURIComponent}}">{{name}}</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-
-	<div id="lcarsFloors" class="lcarsPanel lcarsThemePrimary" ng-class="showMenu ? 'shrinkForMenu' : ''">
-		<div class="lcarsHeader">
-			<div class="lcarsLeft">&nbsp;</div>
-			<div class="lcarsCenter">
-				<span class="lcarsMenuIcon clickable" ng-click="showMenu = !showMenu"><i class="fa fa-bars"></i></span>
-				<span class="lcarsTitle clickable" ng-click="showMenu = !showMenu">{{location.name}}</span>
-			</div>
-		</div>
-
-		<div class="lcarsBody">
-			<div class="lcarsLeft">
-				<ul >
-					<!--<li>Doors</li>
-					<li>Lights</li>
-					<li class="lcarsActive">Motion</li>
-					<li>Temperature</li>
-					<li>Humidity</li>
-					<li class="lcarsActive">Fire</li>
-					<li class="lcarsActive">Batteries</li>-->
-					<li ng-repeat="deviceType in deviceTypes | orderBy: 'name'" ng-class="{lcarsActive: deviceType.enabled}" class="clickable" ng-click="deviceType.enabled = !deviceType.enabled">{{deviceType.name}}</li>
-				</ul>
-			</div>
-			<div class="lcarsCenter">
-				<div class="haTableLayout">
-					<div class="haRow">
-						<imagemap class="haCell" ng-repeat="config in imageMaps" config="config" all-devices="devices"></imagemap>
+<div class="haWrapperVert haFullScreen">
+	<div class="haWrappedCell">
+		<div class="haWrapperHoriz">
+			<div id="lcarsFloors" class="haWrappedCell">
+		    	<lcars-panel class="lcarsThemePrimary" left-menu="deviceTypes"
+			    	title="location.name" title-click="toggleMenu()" title-symbol="'fa fa-bars'">
+					<div class="haTableLayout">
+						<div class="haRow">
+							<imagemap class="haCell" ng-repeat="map in imageMaps" map-layout="map"
+								all-devices="devices" group-click="test(group)"></imagemap>
+						</div>
 					</div>
-				</div>
+				</lcars-panel>
+			</div>
+			<div id="lcarsData" class="haWrappedCell">
+		    	<lcars-panel class="lcarsThemeDatabase" >
+					History
+					<!--<div class="haTableLayout">
+						<div class="haRow">
+							<imagemap class="haCell" ng-repeat="config in imageMaps" config="config" all-devices="devices"></imagemap>
+						</div>
+					</div>-->
+				</lcars-panel>
 			</div>
 		</div>
 	</div>
-
-	<div id="lcarsHistory" class="lcarsPanel lcarsThemeDatabase" ng-class="showMenu ? 'shrinkForMenu' : ''">
-		<div class="lcarsHeader">
-			<div class="lcarsLeft">&nbsp;</div>
-			<div class="lcarsCenter">
-			</div>
-		</div>
-
-		<div class="lcarsBody">
-			<div class="lcarsLeft">
-			</div>
-			<div class="lcarsCenter">
-			</div>
-		</div>
+	<div id="lcarsMenu" class="haWrappedCell" ng-show="showMenu">
+		<lcars-panel class="lcarsThemeAncillary"
+			title="'Nav Menu'" title-click="toggleMenu()" title-symbol="'fa fa-close'">
+			<mainmenu></mainmenu>
+			<ul >
+				<li ng-repeat="(id, name) in locations"><a ng-href="#/lcars/{{id | encodeURIComponent}}">{{name}}</a></li>
+			</ul>
+		</lcars-panel>
 	</div>
-
 </div>
+
 
 <!--
 Color schemes and other ideas from

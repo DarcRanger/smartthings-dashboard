@@ -1,5 +1,5 @@
-<div class="haImageMap" ng-style="{'background-image': 'url('+config.background+')'}" scale-to-background="width" >
-    <div class="haImageMapTile" ng-repeat="tile in config.tiles" ng-style="getTilePosition(tile)">
+<div class="haImageMap" ng-style="{'background-image': 'url('+mapLayout.background+')'}" scale-to-background="width" >
+    <div class="haImageMapTile" ng-repeat="tile in mapLayout.tiles" ng-style="getTilePosition(tile)" ng-click="groupClick({group: tile})">
     	<device ng-repeat="device in allDevices | filterByKeys:tile.devices" class="haMiniDeviceTile" key="device.deviceKey" device="device" ></device>
     </div>
 </div>
